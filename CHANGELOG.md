@@ -62,3 +62,19 @@ The format is inspired by Keep a Changelog.
 * Multi-environment architecture prepared
 * Production-ready project foundation established
 * Phase-based implementation workflow adopted
+
+## Known Warnings
+
+### Injectable AppConfig Warning
+
+Status: Pending
+
+Description:
+Injectable generator cannot resolve AppConfig because it is registered manually during bootstrap.
+
+Impact:
+No runtime impact.
+Application starts correctly.
+
+Planned Fix:
+Environment-aware ConfigModule in Phase 6.

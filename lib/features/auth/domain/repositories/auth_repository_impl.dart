@@ -10,7 +10,6 @@ import '../../../../core/error/failures.dart';
 import '../../../../core/storage/secure_storage/secure_storage_service.dart';
 import '../../domain/repositories/auth_repository.dart';
 
-
 @LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -37,6 +36,9 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       await secureStorage.saveAccessToken(result.token.accessToken);
+      await secureStorage.saveUserId(result.user.id);
+      await secureStorage.saveTenantId(result.user.tenantId);
+      await secureStorage.saveTenantSlug(result.user.tenantSlug);
 
       return Right(result);
     } on Exception catch (e) {

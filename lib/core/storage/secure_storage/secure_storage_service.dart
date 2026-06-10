@@ -11,6 +11,12 @@ class SecureStorageService {
 
   static const refreshTokenKey = 'refresh_token';
 
+  static const userIdKey = 'user_id';
+
+  static const tenantIdKey = 'tenant_id';
+
+  static const tenantSlugKey = 'tenant_slug';
+
   Future<void> saveAccessToken(String token) async {
     await _storage.write(key: accessTokenKey, value: token);
   }
@@ -25,6 +31,18 @@ class SecureStorageService {
 
   Future<String?> getRefreshToken() async {
     return _storage.read(key: refreshTokenKey);
+  }
+
+  Future<void> saveUserId(String value) async {
+    await _storage.write(key: userIdKey, value: value);
+  }
+
+  Future<void> saveTenantId(String value) async {
+    await _storage.write(key: tenantIdKey, value: value);
+  }
+
+  Future<void> saveTenantSlug(String value) async {
+    await _storage.write(key: tenantSlugKey, value: value);
   }
 
   Future<void> clear() async {

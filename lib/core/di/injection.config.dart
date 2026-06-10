@@ -39,6 +39,10 @@ import 'package:app_boilerplate/features/auth/domain/usecases/login_usecase.dart
     as _i272;
 import 'package:app_boilerplate/features/auth/domain/usecases/logout_usecase.dart'
     as _i523;
+import 'package:app_boilerplate/features/auth/presentation/cubit/login_cubit.dart'
+    as _i115;
+import 'package:app_boilerplate/features/splash/presentation/cubit/splash_cubit.dart'
+    as _i331;
 import 'package:connectivity_plus/connectivity_plus.dart' as _i895;
 import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
@@ -77,6 +81,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i506.AuthInterceptor>(
       () => _i506.AuthInterceptor(gh<_i469.SecureStorageService>()),
     );
+    gh.factory<_i331.SplashCubit>(
+      () => _i331.SplashCubit(gh<_i304.SessionService>()),
+    );
     gh.lazySingleton<_i580.DioClient>(
       () => _i580.DioClient(
         gh<_i950.AppConfig>(),
@@ -104,6 +111,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i523.LogoutUseCase>(
       () => _i523.LogoutUseCase(gh<_i975.AuthRepository>()),
+    );
+    gh.factory<_i115.LoginCubit>(
+      () => _i115.LoginCubit(gh<_i272.LoginUseCase>()),
     );
     return this;
   }
