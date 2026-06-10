@@ -1,0 +1,67 @@
+abstract class AppException implements Exception {
+  final String message;
+
+  const AppException({
+    required this.message,
+  });
+
+  @override
+  String toString() => message;
+}
+
+class ServerException extends AppException {
+  const ServerException({
+    required super.message,
+  });
+}
+
+class UnauthorizedException extends AppException {
+  const UnauthorizedException({
+    required super.message,
+  });
+}
+
+class ForbiddenException extends AppException {
+  const ForbiddenException({
+    required super.message,
+  });
+}
+
+class NotFoundException extends AppException {
+  const NotFoundException({
+    required super.message,
+  });
+}
+
+class ValidationException extends AppException {
+  final Map<String, dynamic>? errors;
+
+  const ValidationException({
+    required super.message,
+    this.errors,
+  });
+}
+
+class CacheException extends AppException {
+  const CacheException({
+    required super.message,
+  });
+}
+
+class NetworkException extends AppException {
+  const NetworkException({
+    required super.message,
+  });
+}
+
+class TimeoutException extends AppException {
+  const TimeoutException({
+    required super.message,
+  });
+}
+
+class UnknownException extends AppException {
+  const UnknownException({
+    required super.message,
+  });
+}
