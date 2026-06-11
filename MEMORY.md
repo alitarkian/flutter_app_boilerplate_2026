@@ -2,111 +2,152 @@
 
 ## Project
 
-Flutter App Boilerplate
+Name: app_boilerplate
 
-Architecture:
+Goal:
+Enterprise-grade Flutter Boilerplate using Clean Architecture, Feature First Structure, Dio, AutoRoute, BLoC, GetIt, Injectable and Modular Design.
+
+---
+
+## Architecture
+
+Pattern:
 
 * Clean Architecture
 * Feature First
-* BLoC
+* Repository Pattern
+* UseCase Pattern
+* Dependency Injection
+
+Layers:
+
+* Presentation
+* Domain
+* Data
+
+---
+
+## Completed Phases
+
+### Phase 1 — Foundation
+
+Status: Completed
+
+Implemented:
+
+* Flutter project structure
+* Environment configuration
+* AppConfig
+* Main entrypoints
+* Dev environment bootstrap
+
+---
+
+### Phase 2 — Core Infrastructure
+
+Status: Completed
+
+Implemented:
+
 * GetIt
 * Injectable
-* AutoRoute
-* Code Generation
+* Dependency Injection setup
+* Secure Storage
+* Shared Preferences
 
 ---
 
-## Reference Documents
+### Phase 3 — Network & Auth Foundation
 
-* PROJECT_STRUCTURE.md
-* PHASES.md
+Status: Completed
 
-این دو فایل مرجع اصلی پروژه هستند و هر توسعه جدید باید با آن‌ها سازگار باشد.
+Implemented:
 
----
+* Dio Client
+* Logging Interceptor
+* Auth Interceptor
+* API Error Handling
+* Retrofit Setup
 
-## Current Progress
+Auth:
 
-### Phase 1 — Bootstrap
+* Login API
+* Refresh Token API
+* Auth Me API
 
-Status: COMPLETED
+Entities:
 
-Completed Items:
-
-* GetIt configured
-* Injectable configured
-* AutoRoute configured
-* Splash page created
-* App root created
-* build_runner configured
-
----
-
-### Phase 1.5 — Environment Foundation
-
-Status: COMPLETED
-
-Completed Items:
-
-* AppConfig created
-* EnvironmentType enum created
-* Env singleton created
-* bootstrap.dart created
-* main_dev.dart created
-* main_staging.dart created
-* main_prod.dart created
+* SessionEntity
+* AuthMeEntity
 
 ---
 
-## Current Entry Points
+### Phase 4 — Splash & Design System
 
-* lib/main_dev.dart
-* lib/main_staging.dart
-* lib/main_prod.dart
+Status: Completed
 
-Default development entry:
+Implemented:
 
-lib/main_dev.dart
+* Animated Splash Screen
+* Session Check
+* Route Decision Structure
+* Theme Foundation
+* Color Palette
+* Typography
+* Radius System
+* Spacing System
 
----
+Pending:
 
-## Next Phase
-
-Phase 2 — Core Network Layer
-
-Status: COMPLETED
-
-Completed Items:
-
-* dio_client.dart
-* api_endpoints.dart
-* network_info.dart
-* websocket_client.dart
-* auth_interceptor.dart
-* logging_interceptor.dart
-* retry_interceptor.dart
-* error_interceptor.dart
-* exceptions.dart
-* failures.dart
-* error_handler.dart
+* Native Splash Branding
+* Dark Theme
 
 ---
 
-## Development Rules
+### Phase 5 — Authentication Flow
 
-1. Clean Architecture must be preserved.
-2. Feature-first structure is mandatory.
-3. Dependency Injection only through GetIt.
-4. Routing only through AutoRoute.
-5. No business logic inside UI.
-6. All services must be injectable.
-7. All future features must follow the structure defined in PROJECT_STRUCTURE.md.
+Status: In Progress
+
+Completed:
+
+* LoginCubit
+* LoginState
+* LoginPage
+* LoginUseCase
+* Session Persistence
+
+Pending:
+
+* Auto Login
+* Auth Guard
+* Profile Bootstrap
+* Permission Bootstrap
+* Logout Flow
 
 ---
 
-## Notes
+## API
 
-Current active phase:
-Phase 2
+Base URL:
 
-Ready to implement Network Layer.
+http://127.0.0.1:8000/api/v1/
+
+Health Endpoint:
+
+http://127.0.0.1:8000/health
+
+---
+
+## Auth Endpoints
+
+POST /auth/login
+
+POST /auth/refresh
+
+GET /auth/me
+
+---
+
+## Next Step
+
+Implement Auth Guard and Auto Login Flow.

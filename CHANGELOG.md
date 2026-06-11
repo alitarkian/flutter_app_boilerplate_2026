@@ -1,92 +1,90 @@
 # CHANGELOG.md
 
-All notable changes to this project will be documented in this file.
-
-The format is inspired by Keep a Changelog.
-
----
-
-## [Unreleased]
-
-### Planned
-
-* Phase 2 — Core Network Layer
-* Phase 3 — Storage Layer
-* Phase 4 — Firebase Suite
-* Phase 5 — Device Integration
-* Phase 6 — UI System
-* Phase 7 — Localization
-* Phase 8 — Auth Feature
-* Phase 9 — Testing
-* Phase 10 — Final Wiring & Polish
-
----
-
-## [0.1.0] - 2026-06-10
+## [0.1.0] - Foundation Milestone
 
 ### Added
 
-#### Project Bootstrap
+#### Project Foundation
 
-* Initial Flutter Boilerplate structure created
-* Clean Architecture foundation established
-* Feature-first architecture adopted
-* AutoRoute integrated
-* GetIt integrated
-* Injectable integrated
-* build_runner configured
-
-#### Routing
-
-* Root router created
-* Splash page added
-* Initial navigation flow configured
+* Environment Configuration
+* AppConfig
+* Multiple Entry Points
+* Feature First Structure
 
 #### Dependency Injection
 
-* Dependency injection container configured
-* Injectable code generation configured
+* GetIt
+* Injectable
+* Dependency Registration
 
-#### Environment Foundation
+#### Network
 
-* AppConfig created
-* EnvironmentType enum added
-* Env global configuration holder added
-* bootstrap.dart created
-* main_dev.dart created
-* main_staging.dart created
-* main_prod.dart created
+* Dio Client
+* Auth Interceptor
+* Logging Interceptor
+* Retrofit Integration
 
-#### Development Standards
+#### Storage
 
-* Multi-environment architecture prepared
-* Production-ready project foundation established
-* Phase-based implementation workflow adopted
+* Flutter Secure Storage
+* Shared Preferences
 
-## Known Warnings
+#### Authentication
 
-### Injectable AppConfig Warning
+* Login Endpoint Integration
+* Refresh Token Integration
+* Auth Me Endpoint Integration
 
-Status: Pending
+#### Splash
+
+* Animated Splash Screen
+* Session Check Flow
+* Route Decision Structure
+
+#### Design System
+
+* App Theme
+* App Colors
+* App Typography
+* App Radius
+* App Spacing
+
+#### Routing
+
+* AutoRoute Integration
+* Splash Route
+* Login Route
+* Home Route
+
+---
+
+## Known Issues
+
+### Injectable Warning
 
 Description:
-Injectable generator cannot resolve AppConfig because it is registered manually during bootstrap.
+
+AppConfig is registered manually during bootstrap and injectable generator shows a warning.
 
 Impact:
+
 No runtime impact.
-Application starts correctly.
 
-Planned Fix:
-Environment-aware ConfigModule in Phase 6.
+Status:
 
-## Pending
+Pending future cleanup.
 
-Native Splash Branding
+---
 
-Status: Pending
+## Next Release
 
-Reason:
-Final logo assets are not ready yet.
+0.2.0
 
 Planned:
-flutter_native_splash integration.
+
+* Auth Guard
+* Auto Login
+* Profile Bootstrap
+* Permission Manager
+* Logout Flow
+* Session Management
