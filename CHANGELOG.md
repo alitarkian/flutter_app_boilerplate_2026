@@ -1,90 +1,34 @@
 # CHANGELOG.md
 
-## [0.1.0] - Foundation Milestone
+## 2026-06-11
 
 ### Added
 
-#### Project Foundation
+* Health feature module
+* Health repository
+* Health datasource
+* CheckHealth use case
+* Splash server availability check
+* Retry action when backend is unavailable
+* Session bootstrap during Splash
+* Token-based auto login flow
+* Profile bootstrap foundation
 
-* Environment Configuration
-* AppConfig
-* Multiple Entry Points
-* Feature First Structure
+### Improved
 
-#### Dependency Injection
+* Splash initialization flow
+* Route decision architecture
+* Authentication bootstrap sequence
 
-* GetIt
-* Injectable
-* Dependency Registration
+### Fixed
 
-#### Network
+* Dio interceptor chain issue
+* LoggingInterceptor response handling bug
+* ErrorInterceptor exception propagation
+* Health check false-negative behavior
+* Splash freeze when backend connection succeeds
 
-* Dio Client
-* Auth Interceptor
-* Logging Interceptor
-* Retrofit Integration
+### Technical Notes
 
-#### Storage
-
-* Flutter Secure Storage
-* Shared Preferences
-
-#### Authentication
-
-* Login Endpoint Integration
-* Refresh Token Integration
-* Auth Me Endpoint Integration
-
-#### Splash
-
-* Animated Splash Screen
-* Session Check Flow
-* Route Decision Structure
-
-#### Design System
-
-* App Theme
-* App Colors
-* App Typography
-* App Radius
-* App Spacing
-
-#### Routing
-
-* AutoRoute Integration
-* Splash Route
-* Login Route
-* Home Route
-
----
-
-## Known Issues
-
-### Injectable Warning
-
-Description:
-
-AppConfig is registered manually during bootstrap and injectable generator shows a warning.
-
-Impact:
-
-No runtime impact.
-
-Status:
-
-Pending future cleanup.
-
----
-
-## Next Release
-
-0.2.0
-
-Planned:
-
-* Auth Guard
-* Auto Login
-* Profile Bootstrap
-* Permission Manager
-* Logout Flow
-* Session Management
+* LoggingInterceptor refactored to avoid breaking Dio pipeline.
+* RetryInterceptor currently uses standalone Dio and will be redesigned during Refresh Token implementation.

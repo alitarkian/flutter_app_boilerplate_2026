@@ -64,12 +64,13 @@ Status: Completed
 Implemented:
 
 * Dio Client
-* Logging Interceptor
 * Auth Interceptor
+* Retry Interceptor
+* Error Interceptor
+* Logging Interceptor
 * API Error Handling
-* Retrofit Setup
 
-Auth:
+Auth APIs:
 
 * Login API
 * Refresh Token API
@@ -90,6 +91,9 @@ Implemented:
 
 * Animated Splash Screen
 * Session Check
+* Health Check Bootstrap
+* Server Availability Detection
+* Retry Action
 * Route Decision Structure
 * Theme Foundation
 * Color Palette
@@ -115,14 +119,45 @@ Completed:
 * LoginPage
 * LoginUseCase
 * Session Persistence
+* Splash Authentication Bootstrap
+* Auto Login (Token Based)
+* Profile Bootstrap Foundation
 
 Pending:
 
-* Auto Login
-* Auth Guard
-* Profile Bootstrap
+* Route Auth Guard
+* Refresh Token Flow
 * Permission Bootstrap
 * Logout Flow
+
+---
+
+## Health Check
+
+Endpoint:
+
+GET /health
+
+Behavior:
+
+* Executed during Splash initialization
+* Detects server availability
+* Supports Retry Action
+* Blocks application bootstrap if backend is unavailable
+
+---
+
+## Technical Debt
+
+RetryInterceptor:
+
+Current implementation retries requests using a standalone Dio instance.
+
+Future improvement:
+
+* Retry through shared Dio pipeline
+* Integrate with Refresh Token Flow
+* Avoid duplicated networking stack
 
 ---
 
@@ -134,20 +169,10 @@ http://127.0.0.1:8000/api/v1/
 
 Health Endpoint:
 
-http://127.0.0.1:8000/health
-
----
-
-## Auth Endpoints
-
-POST /auth/login
-
-POST /auth/refresh
-
-GET /auth/me
+/health
 
 ---
 
 ## Next Step
 
-Implement Auth Guard and Auto Login Flow.
+Implement Route Auth Guard and Logout Flow.
