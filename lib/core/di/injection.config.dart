@@ -25,8 +25,11 @@ import 'package:app_boilerplate/core/network/interceptors/retry_interceptor.dart
     as _i586;
 import 'package:app_boilerplate/core/network/network_info.dart' as _i229;
 import 'package:app_boilerplate/core/network/websocket_client.dart' as _i567;
+import 'package:app_boilerplate/core/router/app_router.dart' as _i233;
+import 'package:app_boilerplate/core/router/guards/auth_guard.dart' as _i988;
 import 'package:app_boilerplate/core/storage/secure_storage/secure_storage_service.dart'
     as _i469;
+import 'package:app_boilerplate/core/storage/session_service.dart' as _i752;
 import 'package:app_boilerplate/features/auth/data/datasources/auth_remote_data_source.dart'
     as _i747;
 import 'package:app_boilerplate/features/auth/domain/repositories/auth_repository.dart'
@@ -79,6 +82,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i586.RetryInterceptor>(() => _i586.RetryInterceptor());
     gh.lazySingleton<_i567.WebSocketClient>(() => _i567.WebSocketClient());
+    gh.lazySingleton<_i752.SessionService>(() => _i752.SessionService());
     gh.lazySingleton<_i760.AuthSessionCubit>(() => _i760.AuthSessionCubit());
     gh.lazySingleton<_i469.SecureStorageService>(
       () => _i469.SecureStorageService(gh<_i558.FlutterSecureStorage>()),
@@ -141,6 +145,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i304.SessionService>(),
         gh<_i663.CheckHealthUseCase>(),
       ),
+    );
+    gh.lazySingleton<_i988.AuthGuard>(
+      () => _i988.AuthGuard(gh<_i304.SessionService>()),
+    );
+    gh.singleton<_i233.AppRouter>(
+      () => _i233.AppRouter(authGuard: gh<_i988.AuthGuard>()),
     );
     return this;
   }

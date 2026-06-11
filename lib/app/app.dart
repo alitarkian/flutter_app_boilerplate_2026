@@ -1,8 +1,9 @@
-import 'package:app_boilerplate/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../core/config/env.dart';
+import '../core/di/injection.dart';
 import '../core/router/app_router.dart';
+import '../core/theme/app_theme.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -12,7 +13,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final _router = AppRouter();
+  final _router = getIt<AppRouter>();
 
   @override
   Widget build(BuildContext context) {

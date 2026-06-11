@@ -6,7 +6,7 @@ import 'injection.config.dart';
 
 final GetIt getIt = GetIt.instance;
 
-@InjectableInit(initializerName: 'init', asExtension: true)
+@InjectableInit()
 Future<void> configureDependencies(AppConfig config) async {
   if (!getIt.isRegistered<AppConfig>()) {
     getIt.registerSingleton<AppConfig>(config);
