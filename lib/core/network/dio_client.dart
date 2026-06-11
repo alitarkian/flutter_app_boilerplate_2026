@@ -51,7 +51,7 @@ class DioClient {
       authInterceptor,
       retryInterceptor,
       errorInterceptor,
-      loggingInterceptor,
+      if (config.enableLogs) loggingInterceptor,
     ]);
   }
 }

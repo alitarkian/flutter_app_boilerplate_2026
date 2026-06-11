@@ -84,7 +84,19 @@ class _SplashViewState extends State<_SplashView>
               const SnackBar(content: Text('Initialization failed')),
             );
             break;
-
+          case SplashStatus.serverUnavailable:
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text('Cannot connect to server'),
+                action: SnackBarAction(
+                  label: 'Retry',
+                  onPressed: () {
+                    context.read<SplashCubit>().initialize();
+                  },
+                ),
+              ),
+            );
+            break;
           default:
             break;
         }
@@ -206,6 +218,9 @@ class _SplashViewState extends State<_SplashView>
 
       case SplashStatus.updateRequired:
         return 'Update required';
+
+      case SplashStatus.serverUnavailable:
+        return 'Server unavailable';
     }
   }
 }

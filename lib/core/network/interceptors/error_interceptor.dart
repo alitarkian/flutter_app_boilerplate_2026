@@ -6,49 +6,52 @@ import '../../error/exceptions.dart';
 @lazySingleton
 class ErrorInterceptor extends Interceptor {
   @override
-  void onError(
-    DioException err,
-    ErrorInterceptorHandler handler,
-  ) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    Exception exception;
+
     switch (err.response?.statusCode) {
       case 400:
-        throw ServerException(
-          message: 'Bad request',
-        );
+        exception = ServerException(message: 'Bad request');
+        break;
 
       case 401:
-        throw UnauthorizedException(
-          message: 'Unauthorized',
-        );
+        exception = UnauthorizedException(message: 'Unauthorized');
+        break;
 
       case 403:
-        throw ForbiddenException(
-          message: 'Forbidden',
-        );
+        exception = ForbiddenException(message: 'Forbidden');
+        break;
 
       case 404:
-        throw NotFoundException(
-          message: 'Resource not found',
-        );
+        exception = NotFoundException(message: 'Resource not found');
+        break;
 
       case 422:
-        throw ValidationException(
+        exception = ValidationException(
           message: 'Validation error',
           errors: err.response?.data,
         );
+        break;
 
       case 500:
       case 501:
       case 502:
       case 503:
-        throw ServerException(
-          message: 'Server error',
-        );
+        exception = ServerException(message: 'Server error');
+        break;
 
       default:
-        throw UnknownException(
-          message: err.message ?? 'Unknown error',
-        );
+        exception = UnknownException(message: err.message ?? 'Unknown error');
     }
+
+    handler.reject(
+      DioException(
+        requestOptions: err.requestOptions,
+        response: err.response,
+        error: exception,
+        type: err.type,
+        message: err.message,
+      ),
+    );
   }
 }

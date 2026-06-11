@@ -5,6 +5,7 @@ enum SplashStatus {
   loading,
   authenticated,
   unauthenticated,
+  serverUnavailable,
   maintenance,
   updateRequired,
   error,

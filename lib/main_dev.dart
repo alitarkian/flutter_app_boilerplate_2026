@@ -7,7 +7,7 @@ Future<void> main() async {
     AppConfig(
       environment: EnvironmentType.dev,
       appName: 'Boilerplate Dev',
-      baseUrl: 'https://dev-api.example.com',
+      baseUrl: 'http://192.168.43.181:8000/api/v1',
       enableLogs: true,
       enableInspector: true,
     ),

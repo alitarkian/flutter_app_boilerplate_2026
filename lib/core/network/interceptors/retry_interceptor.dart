@@ -21,8 +21,7 @@ class RetryInterceptor extends Interceptor {
       return handler.next(err);
     }
 
-    final retryCount =
-        (err.requestOptions.extra['retry_count'] as int?) ?? 0;
+    final retryCount = (err.requestOptions.extra['retry_count'] as int?) ?? 0;
 
     if (retryCount >= maxRetry) {
       return handler.next(err);
@@ -30,16 +29,12 @@ class RetryInterceptor extends Interceptor {
 
     err.requestOptions.extra['retry_count'] = retryCount + 1;
 
-    await Future.delayed(
-      Duration(seconds: retryCount + 1),
-    );
+    await Future.delayed(Duration(seconds: retryCount + 1));
 
     try {
       final dio = Dio();
 
-      final response = await dio.fetch(
-        err.requestOptions,
-      );
+      final response = await dio.fetch(err.requestOptions);
 
       handler.resolve(response);
     } catch (_) {
