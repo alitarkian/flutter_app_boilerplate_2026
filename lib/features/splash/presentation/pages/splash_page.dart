@@ -1,3 +1,4 @@
+import 'package:app_boilerplate/core/router/app_router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,11 +68,15 @@ class _SplashViewState extends State<_SplashView>
       listener: (context, state) {
         switch (state.status) {
           case SplashStatus.authenticated:
-            debugPrint('Navigate To Home');
+            if (state.status == SplashStatus.authenticated) {
+              context.router.replace(const HomeRoute());
+            }
             break;
 
           case SplashStatus.unauthenticated:
-            debugPrint('Navigate To Login');
+            if (state.status == SplashStatus.unauthenticated) {
+              context.router.replace(const LoginRoute());
+            }
             break;
 
           case SplashStatus.error:

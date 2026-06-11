@@ -12,5 +12,5 @@ Future<void> configureDependencies(AppConfig config) async {
     getIt.registerSingleton<AppConfig>(config);
   }
 
-  await getIt.init();
+  getIt.init();
 }

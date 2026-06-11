@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_endpoints.dart';
