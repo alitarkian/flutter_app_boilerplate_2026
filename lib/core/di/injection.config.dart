@@ -29,7 +29,6 @@ import 'package:app_boilerplate/core/router/app_router.dart' as _i233;
 import 'package:app_boilerplate/core/router/guards/auth_guard.dart' as _i988;
 import 'package:app_boilerplate/core/storage/secure_storage/secure_storage_service.dart'
     as _i469;
-import 'package:app_boilerplate/core/storage/session_service.dart' as _i752;
 import 'package:app_boilerplate/features/auth/data/datasources/auth_remote_data_source.dart'
     as _i747;
 import 'package:app_boilerplate/features/auth/domain/repositories/auth_repository.dart'
@@ -42,6 +41,8 @@ import 'package:app_boilerplate/features/auth/domain/usecases/login_usecase.dart
     as _i272;
 import 'package:app_boilerplate/features/auth/domain/usecases/logout_usecase.dart'
     as _i523;
+import 'package:app_boilerplate/features/auth/domain/usecases/refresh_token_usecase.dart'
+    as _i691;
 import 'package:app_boilerplate/features/auth/presentation/cubit/auth_session_cubit.dart'
     as _i760;
 import 'package:app_boilerplate/features/auth/presentation/cubit/login_cubit.dart'
@@ -82,7 +83,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i586.RetryInterceptor>(() => _i586.RetryInterceptor());
     gh.lazySingleton<_i567.WebSocketClient>(() => _i567.WebSocketClient());
-    gh.lazySingleton<_i752.SessionService>(() => _i752.SessionService());
     gh.lazySingleton<_i760.AuthSessionCubit>(() => _i760.AuthSessionCubit());
     gh.lazySingleton<_i469.SecureStorageService>(
       () => _i469.SecureStorageService(gh<_i558.FlutterSecureStorage>()),
@@ -127,15 +127,25 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i523.LogoutUseCase>(
       () => _i523.LogoutUseCase(gh<_i975.AuthRepository>()),
     );
-    gh.factory<_i663.CheckHealthUseCase>(
-      () => _i663.CheckHealthUseCase(gh<_i192.HealthRepository>()),
+    gh.factory<_i691.RefreshTokenUseCase>(
+      () => _i691.RefreshTokenUseCase(gh<_i975.AuthRepository>()),
     );
     gh.lazySingleton<_i304.SessionService>(
       () => _i304.SessionService(
         gh<_i469.SecureStorageService>(),
         gh<_i292.GetProfileUseCase>(),
+        gh<_i691.RefreshTokenUseCase>(),
         gh<_i760.AuthSessionCubit>(),
       ),
+    );
+    gh.lazySingleton<_i988.AuthGuard>(
+      () => _i988.AuthGuard(gh<_i304.SessionService>()),
+    );
+    gh.singleton<_i233.AppRouter>(
+      () => _i233.AppRouter(authGuard: gh<_i988.AuthGuard>()),
+    );
+    gh.factory<_i663.CheckHealthUseCase>(
+      () => _i663.CheckHealthUseCase(gh<_i192.HealthRepository>()),
     );
     gh.factory<_i115.LoginCubit>(
       () => _i115.LoginCubit(gh<_i272.LoginUseCase>()),
@@ -145,12 +155,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i304.SessionService>(),
         gh<_i663.CheckHealthUseCase>(),
       ),
-    );
-    gh.lazySingleton<_i988.AuthGuard>(
-      () => _i988.AuthGuard(gh<_i304.SessionService>()),
-    );
-    gh.singleton<_i233.AppRouter>(
-      () => _i233.AppRouter(authGuard: gh<_i988.AuthGuard>()),
     );
     return this;
   }

@@ -12,6 +12,8 @@ abstract interface class AuthRepository {
     required String deviceId,
   });
 
+  Future<Either<Failure, SessionEntity>> refreshToken(String refreshToken);
+
   Future<Either<Failure, AuthMeModel>> getProfile();
 
   Future<Either<Failure, Unit>> logout();

@@ -18,14 +18,8 @@ class HealthRemoteDataSourceImpl implements HealthRemoteDataSource {
     try {
       final response = await dioClient.dio.get(ApiEndpoints.health);
 
-      print('HEALTH STATUS => ${response.statusCode}');
-      print('HEALTH DATA => ${response.data}');
-      print('HEALTH TYPE => ${response.runtimeType}');
-
       return response.statusCode == 200;
-    } catch (e, s) {
-      print('HEALTH ERROR => $e');
-      print(s);
+    } catch (e) {
       return false;
     }
   }

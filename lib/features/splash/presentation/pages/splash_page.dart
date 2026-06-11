@@ -1,4 +1,5 @@
 import 'package:app_boilerplate/core/router/app_router.dart';
+import 'package:app_boilerplate/core/theme/app_colors.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -108,7 +109,11 @@ class _SplashViewState extends State<_SplashView>
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Color(0xFF0F172A), Color(0xFF1E293B)],
+              colors: [
+                AppColors.luxPrimary,
+                AppColors.luxBlack,
+                AppColors.luxGreen,
+              ],
             ),
           ),
           child: SafeArea(
@@ -128,8 +133,8 @@ class _SplashViewState extends State<_SplashView>
                         color: Colors.white.withValues(alpha: 0.08),
                       ),
                       child: const Icon(
-                        Icons.apps_rounded,
-                        color: Colors.white,
+                        Icons.abc,
+                        color: AppColors.luxWhite,
                         size: 64,
                       ),
                     ),
@@ -140,7 +145,7 @@ class _SplashViewState extends State<_SplashView>
                   const Text(
                     'Tarkian Labs',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.luxWhite,
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1,
@@ -151,7 +156,7 @@ class _SplashViewState extends State<_SplashView>
 
                   const Text(
                     'Enterprise Application Platform',
-                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                    style: TextStyle(color: AppColors.luxWhite, fontSize: 14),
                   ),
 
                   const Spacer(),
@@ -160,7 +165,9 @@ class _SplashViewState extends State<_SplashView>
                     padding: const EdgeInsets.symmetric(horizontal: 48),
                     child: Column(
                       children: [
-                        const LinearProgressIndicator(),
+                        const LinearProgressIndicator(
+                          color: AppColors.victorCafeOrange,
+                        ),
 
                         const SizedBox(height: 16),
 
@@ -169,7 +176,7 @@ class _SplashViewState extends State<_SplashView>
                             return Text(
                               _statusText(state.status),
                               style: const TextStyle(
-                                color: Colors.white70,
+                                color: AppColors.luxWhite,
                                 fontSize: 12,
                               ),
                             );
@@ -183,7 +190,7 @@ class _SplashViewState extends State<_SplashView>
 
                   const Text(
                     'v1.0.0',
-                    style: TextStyle(color: Colors.white38, fontSize: 12),
+                    style: TextStyle(color: AppColors.luxWhite, fontSize: 12),
                   ),
 
                   const SizedBox(height: 24),

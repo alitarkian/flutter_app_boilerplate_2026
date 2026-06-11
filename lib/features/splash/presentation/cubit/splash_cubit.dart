@@ -17,22 +17,14 @@ class SplashCubit extends Cubit<SplashState> {
     emit(state.copyWith(status: SplashStatus.loading));
 
     try {
-      print('STEP 1');
-
       final isHealthy = await checkHealthUseCase();
-
-      print('STEP 2: health=$isHealthy');
 
       if (!isHealthy) {
         emit(state.copyWith(status: SplashStatus.serverUnavailable));
         return;
       }
 
-      print('STEP 3');
-
       final isLoggedIn = await sessionService.isLoggedIn();
-
-      print('STEP 4: loggedIn=$isLoggedIn');
 
       emit(
         state.copyWith(
@@ -41,12 +33,7 @@ class SplashCubit extends Cubit<SplashState> {
               : SplashStatus.unauthenticated,
         ),
       );
-
-      print('STEP 5');
-    } catch (e, s) {
-      print('SPLASH ERROR => $e');
-      print(s);
-
+    } catch (e) {
       emit(state.copyWith(status: SplashStatus.serverUnavailable));
     }
   }

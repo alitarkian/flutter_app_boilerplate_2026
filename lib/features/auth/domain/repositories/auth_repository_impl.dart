@@ -35,10 +35,22 @@ class AuthRepositoryImpl implements AuthRepository {
         ),
       );
 
-      await secureStorage.saveAccessToken(result.token.accessToken);
-      await secureStorage.saveUserId(result.user.id);
-      await secureStorage.saveTenantId(result.user.tenantId);
-      await secureStorage.saveTenantSlug(result.user.tenantSlug);
+      await _saveSession(result);
+
+      return Right(result);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, SessionModel>> refreshToken(
+    String refreshToken,
+  ) async {
+    try {
+      final result = await remoteDataSource.refreshToken(refreshToken);
+
+      await _saveSession(result);
 
       return Right(result);
     } on Exception catch (e) {
@@ -66,5 +78,13 @@ class AuthRepositoryImpl implements AuthRepository {
     } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));
     }
+  }
+
+  Future<void> _saveSession(SessionModel session) async {
+    await secureStorage.saveAccessToken(session.token.accessToken);
+    await secureStorage.saveRefreshToken(session.token.refreshToken);
+    await secureStorage.saveUserId(session.user.id);
+    await secureStorage.saveTenantId(session.user.tenantId);
+    await secureStorage.saveTenantSlug(session.user.tenantSlug);
   }
 }

@@ -15,12 +15,22 @@ class AuthGuard extends AutoRouteGuard {
     NavigationResolver resolver,
     StackRouter router,
   ) async {
-    final isLoggedIn = await sessionService.isLoggedIn();
-
-    if (isLoggedIn) {
+    // اگه token داره — بذار بره (سریع، بدون API)
+    final hasToken = await sessionService.hasToken();
+    if (hasToken) {
       resolver.next(true);
-    } else {
-      router.replace(const LoginRoute());
+      return;
     }
+
+    // token نداره — سعی کن refresh کنی
+    final refreshed = await sessionService.tryRefresh();
+    if (refreshed) {
+      resolver.next(true);
+      return;
+    }
+
+    // refresh هم نشد — session رو پاک کن و بفرست Login
+    await sessionService.logout();
+    router.replace(const LoginRoute());
   }
 }

@@ -9,6 +9,8 @@ import '../models/session_model.dart';
 abstract interface class AuthRemoteDataSource {
   Future<SessionModel> login(LoginRequestModel request);
 
+  Future<SessionModel> refreshToken(String refreshToken);
+
   Future<AuthMeModel> getProfile();
 }
 
@@ -23,6 +25,16 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final response = await dioClient.dio.post(
       ApiEndpoints.login,
       data: request.toJson(),
+    );
+
+    return SessionModel.fromJson(response.data);
+  }
+
+  @override
+  Future<SessionModel> refreshToken(String refreshToken) async {
+    final response = await dioClient.dio.post(
+      ApiEndpoints.refreshToken,
+      data: {'refresh_token': refreshToken},
     );
 
     return SessionModel.fromJson(response.data);

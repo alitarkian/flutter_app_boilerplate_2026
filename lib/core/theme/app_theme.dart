@@ -9,9 +9,9 @@ abstract final class AppTheme {
     return ThemeData(
       useMaterial3: true,
 
-      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.luxWhite),
 
-      scaffoldBackgroundColor: AppColors.background,
+      scaffoldBackgroundColor: AppColors.luxWhite,
 
       appBarTheme: const AppBarTheme(centerTitle: false, elevation: 0),
 
