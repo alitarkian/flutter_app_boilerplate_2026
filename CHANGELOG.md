@@ -78,3 +78,15 @@ Application starts correctly.
 
 Planned Fix:
 Environment-aware ConfigModule in Phase 6.
+
+## Pending
+
+Native Splash Branding
+
+Status: Pending
+
+Reason:
+Final logo assets are not ready yet.
+
+Planned:
+flutter_native_splash integration.

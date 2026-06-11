@@ -1,3 +1,4 @@
+import 'package:app_boilerplate/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../core/config/env.dart';
@@ -18,6 +19,7 @@ class _AppState extends State<App> {
     return MaterialApp.router(
       title: Env.config.appName,
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.light(),
       routerConfig: _router.config(),
     );
   }
