@@ -29,10 +29,9 @@ class AppCachedImage extends StatelessWidget {
       width: width,
       height: height,
       fit: fit,
-      placeholder: (_, _) => const Center(child: AppLoader.small()),
-      errorWidget: (_, _, _) {
-        return const Center(child: Icon(Icons.broken_image));
-      },
+      placeholder: (context, url) => const Center(child: AppLoader.small()),
+      errorWidget: (context, url, error) =>
+          const Center(child: Icon(Icons.broken_image)),
     );
 
     if (borderRadius != null) {

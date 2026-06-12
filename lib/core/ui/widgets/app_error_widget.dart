@@ -1,6 +1,6 @@
-import 'package:app_boilerplate/core/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 
+import '../../theme/app_spacing.dart';
 import 'app_button.dart';
 
 class AppErrorWidget extends StatelessWidget {

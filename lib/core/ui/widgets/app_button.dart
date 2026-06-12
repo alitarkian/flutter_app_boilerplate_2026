@@ -77,10 +77,16 @@ class AppButton extends StatelessWidget {
     final disabled = !enabled || loading;
 
     if (type == AppButtonType.text) {
-      return TextButton(
+      final button = TextButton(
         onPressed: disabled ? null : onPressed,
         child: _child(),
       );
+
+      if (!expanded) {
+        return button;
+      }
+
+      return SizedBox(width: double.infinity, child: button);
     }
 
     final button = SizedBox(
@@ -149,7 +155,8 @@ class AppButton extends StatelessWidget {
         );
 
       case AppButtonType.text:
-        return ElevatedButton.styleFrom();
+        // Unreachable: handled separately above.
+        return const ButtonStyle();
     }
   }
 }
