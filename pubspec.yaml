@@ -28,6 +28,10 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   flutter_secure_storage: ^10.3.1
+  cached_network_image: ^3.4.1
+  lottie: ^3.3.3
+  flutter_screenutil: ^5.9.3
+  # easy_localization: ^3.0.8
   # shared_preferences: ^2.5.5
 
 dev_dependencies:
@@ -42,6 +46,8 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
+    - assets/translations/
+    
   uses-material-design: true
 
 

@@ -1,5 +1,5 @@
+import 'package:app_boilerplate/core/ui/widgets/responsive/screen_util_init.dart';
 import 'package:flutter/material.dart';
-
 import '../core/config/env.dart';
 import '../core/di/injection.dart';
 import '../core/router/app_router.dart';
@@ -17,11 +17,13 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: Env.config.appName,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light(),
-      routerConfig: _router.config(),
+    return AppScreenUtilInit(
+      child: MaterialApp.router(
+        title: Env.config.appName,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light(),
+        routerConfig: _router.config(),
+      ),
     );
   }
 }

@@ -84,4 +84,7 @@ abstract final class AppColors {
 
   static const transparent = Colors.transparent;
   static const current = Colors.black; // placeholder for "currentColor"
+
+  static const primary = luxBlue;
+  static const primarytext = luxWhite;
 }
