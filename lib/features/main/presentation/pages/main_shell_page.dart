@@ -23,6 +23,16 @@ class MainShellPage extends StatelessWidget {
               icon: Icon(Icons.smart_toy_outlined),
               label: 'AI',
             ),
+            NavigationDestination(
+              icon: Icon(Icons.favorite),
+              label: 'Favorites',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.shopping_bag),
+              label: 'Orders',
+            ),
+            NavigationDestination(icon: Icon(Icons.wallet), label: 'Wallet'),
+            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
           ],
         );
       },
