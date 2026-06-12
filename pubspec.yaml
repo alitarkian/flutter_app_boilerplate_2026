@@ -32,6 +32,7 @@ dependencies:
   lottie: ^3.3.3
   flutter_screenutil: ^5.9.3
   shared_preferences: ^2.5.5
+  json_annotation: ^4.12.0
   # easy_localization: ^3.0.8
   # shared_preferences: ^2.5.5
 
@@ -43,6 +44,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   injectable_generator: ^3.0.2
+  json_serializable: ^6.14.0
 
 flutter:
   assets:
@@ -55,12 +57,20 @@ flutter:
 
 flutter_native_splash:
   color: "#1c1c1c"
+  image: assets/images/logo.png
+  
+  # برای اینکه در حالت دارک مود هم مشکلی نباشد (اگر لوگوی جداگانه دارید)
+  # image_dark: assets/images/logo_white.png 
 
   android: true
   ios: true
-
-  image: assets/images/logo.png
-
+  
+  # تنظیمات اختصاصی اندروید ۱۲
   android_12:
-    color: "#1c1c1c"
     image: assets/images/logo.png
+    color: "#1c1c1c"
+    # icon_background_color: "#1c1c1c" # اگر آیکون شما شفاف است
+    
+  # غیرفعال کردن وضعیت تمام صفحه اگر می‌خواهید Status Bar گوشی نمایش داده شود
+  fullscreen: false 
+

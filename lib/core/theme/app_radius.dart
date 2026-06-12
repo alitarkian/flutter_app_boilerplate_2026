@@ -19,4 +19,5 @@ abstract final class AppRadius {
   static const avatar = full;
   static const badge = full;
   static const icon = sm;
+  static const double pill = 999;
 }

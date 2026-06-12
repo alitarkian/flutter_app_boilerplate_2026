@@ -4,7 +4,8 @@ import 'package:injectable/injectable.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
-
+import '../../features/ai_assistant/presentation/pages/ai_assistant_page.dart';
+import '../../features/main/presentation/pages/main_shell_page.dart';
 import 'guards/auth_guard.dart';
 
 part 'app_router.gr.dart';
@@ -22,6 +23,14 @@ class AppRouter extends RootStackRouter {
 
     AutoRoute(page: LoginRoute.page),
 
-    AutoRoute(page: HomeRoute.page, guards: [authGuard]),
+    AutoRoute(
+      page: MainShellRoute.page,
+      guards: [authGuard],
+      path: '/',
+      children: [
+        AutoRoute(page: HomeRoute.page, path: 'home', initial: true),
+        AutoRoute(page: AiAssistantRoute.page, path: 'ai'),
+      ],
+    ),
   ];
 }

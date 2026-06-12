@@ -11,6 +11,22 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [AiAssistantPage]
+class AiAssistantRoute extends PageRouteInfo<void> {
+  const AiAssistantRoute({List<PageRouteInfo>? children})
+    : super(AiAssistantRoute.name, initialChildren: children);
+
+  static const String name = 'AiAssistantRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AiAssistantPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -38,6 +54,22 @@ class LoginRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const LoginPage();
+    },
+  );
+}
+
+/// generated route for
+/// [MainShellPage]
+class MainShellRoute extends PageRouteInfo<void> {
+  const MainShellRoute({List<PageRouteInfo>? children})
+    : super(MainShellRoute.name, initialChildren: children);
+
+  static const String name = 'MainShellRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainShellPage();
     },
   );
 }

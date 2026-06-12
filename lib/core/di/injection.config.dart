@@ -55,6 +55,16 @@ import 'package:app_boilerplate/features/health/domain/repositories/health_repos
     as _i192;
 import 'package:app_boilerplate/features/health/domain/usecases/check_health_usecase.dart'
     as _i663;
+import 'package:app_boilerplate/features/home/data/datasources/home_remote_datasource.dart'
+    as _i294;
+import 'package:app_boilerplate/features/home/data/repositories/home_repository_impl.dart'
+    as _i935;
+import 'package:app_boilerplate/features/home/domain/repositories/home_repository.dart'
+    as _i467;
+import 'package:app_boilerplate/features/home/domain/usecases/get_home_data_usecase.dart'
+    as _i211;
+import 'package:app_boilerplate/features/home/presentation/bloc/home_cubit.dart'
+    as _i523;
 import 'package:app_boilerplate/features/splash/presentation/cubit/splash_cubit.dart'
     as _i331;
 import 'package:connectivity_plus/connectivity_plus.dart' as _i895;
@@ -143,6 +153,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i760.AuthSessionCubit>(),
       ),
     );
+    gh.lazySingleton<_i294.HomeRemoteDataSource>(
+      () => _i294.HomeRemoteDataSourceImpl(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i988.AuthGuard>(
       () => _i988.AuthGuard(gh<_i304.SessionService>()),
     );
@@ -155,11 +168,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i115.LoginCubit>(
       () => _i115.LoginCubit(gh<_i272.LoginUseCase>()),
     );
+    gh.lazySingleton<_i467.HomeRepository>(
+      () => _i935.HomeRepositoryImpl(gh<_i294.HomeRemoteDataSource>()),
+    );
+    gh.factory<_i211.GetHomeDataUseCase>(
+      () => _i211.GetHomeDataUseCase(gh<_i467.HomeRepository>()),
+    );
     gh.factory<_i331.SplashCubit>(
       () => _i331.SplashCubit(
         gh<_i304.SessionService>(),
         gh<_i663.CheckHealthUseCase>(),
       ),
+    );
+    gh.factory<_i523.HomeCubit>(
+      () => _i523.HomeCubit(gh<_i211.GetHomeDataUseCase>()),
     );
     return this;
   }
