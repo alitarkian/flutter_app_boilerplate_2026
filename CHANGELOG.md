@@ -1,19 +1,39 @@
 # CHANGELOG.md
 
-## 2026-06-12
+## 2026-06-12 (cont.)
+
+### Reviewed
+
+* `AppTheme.light()` and `AppTheme.dark()` reviewed — both already fully implemented and wired in `app.dart` (`theme`, `darkTheme`, `themeMode: ThemeMode.system`). Theming portion of Phase 7 closed without additional work needed.
+
+### Found (minor, non-blocking)
+
+* `light()` checkboxTheme: two `if` statements without braces (lint warning only)
+* Light `ColorScheme` missing `surfaceContainerLowest` (present in dark) — parity gap noted as tech debt
 
 ### Status
 
-* Phase 5 (Authentication Flow) marked as Completed.
-* Phase 6 (UI System) marked as In Progress — current active phase.
+* Phase 7 split into 7a (Theming — Completed) and 7b (Home Feature Foundation — In Progress, current focus)
 
-### Notes
+---
 
-* MEMORY.md updated to reflect completed Phase 5 scope, including Health module and Splash bootstrap as part of Phase 5 deliverables.
-* Pending items consolidated under Phase 6 next goals: AppButton, AppTextField, AppLoader, AppErrorWidget, AppEmptyState, AppCachedImage, AppLottie, ScreenUtil integration.
-* RegisterPage and ForgotPasswordPage confirmed as not yet implemented (moved to pending under Auth feature).
-* Home feature confirmed pending (data/domain layers not started).
-* Settings feature confirmed not started.
+## 2026-06-12
+
+### Added
+
+* AppButton, AppTextField, AppLoader, AppErrorWidget, AppEmptyState, AppCachedImage, AppLottie, AppFullscreenLoader
+* AppScreenUtilInit wired into app.dart
+
+### Fixed
+
+* AppLoader size/strokeWidth now functional
+* AppButton dead code removed
+* AppErrorWidget/AppEmptyState import paths unified
+* AppCachedImage callback signatures made SDK-safe
+
+### Status
+
+* Phase 6 (UI System) marked as Completed.
 
 ---
 
@@ -21,21 +41,11 @@
 
 ### Added
 
-* Health feature module
-* Health repository
-* Health datasource
-* CheckHealth use case
-* Splash server availability check
-* Retry action when backend is unavailable
+* Health feature module, repository, datasource, CheckHealth usecase
+* Splash server availability check + retry action
 * Session bootstrap during Splash
 * Token-based auto login flow
 * Profile bootstrap foundation
-
-### Improved
-
-* Splash initialization flow
-* Route decision architecture
-* Authentication bootstrap sequence
 
 ### Fixed
 
@@ -44,8 +54,3 @@
 * ErrorInterceptor exception propagation
 * Health check false-negative behavior
 * Splash freeze when backend connection succeeds
-
-### Technical Notes
-
-* LoggingInterceptor refactored to avoid breaking Dio pipeline.
-* RetryInterceptor currently uses standalone Dio and will be redesigned during Refresh Token implementation.

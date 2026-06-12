@@ -21,7 +21,9 @@ class _AppState extends State<App> {
       child: MaterialApp.router(
         title: Env.config.appName,
         debugShowCheckedModeBanner: false,
-        theme: AppTheme.dark(),
+        theme: AppTheme.light(),
+        darkTheme: AppTheme.dark(),
+        themeMode: ThemeMode.system,
         routerConfig: _router.config(),
       ),
     );

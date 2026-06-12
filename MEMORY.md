@@ -31,245 +31,115 @@ Layers:
 ## Completed Phases
 
 ### Phase 1 — Foundation
-
 Status: Completed
-
-Implemented:
-
-* Flutter project structure
-* Environment configuration
-* AppConfig
-* Main entrypoints
-* Bootstrap architecture
-* Dev / Staging / Production entrypoints
-
----
 
 ### Phase 2 — Core Infrastructure
-
 Status: Completed
-
-Implemented:
-
-* GetIt
-* Injectable
-* Dependency Injection setup
-* Secure Storage
-* Register Modules
-* Network Modules
-* Storage Modules
-
----
 
 ### Phase 3 — Network & Auth Foundation
-
 Status: Completed
-
-Implemented:
-
-* Dio Client
-* Auth Interceptor
-* Retry Interceptor
-* Error Interceptor
-* Logging Interceptor
-* API Error Handling
-* WebSocket Wrapper
-* Network Info
-
-Auth APIs:
-
-* Login API
-* Refresh Token API
-* Auth Me API
-
-Entities:
-
-* SessionEntity
-* AuthMeEntity
-* TokenEntity
-* UserEntity
-
----
 
 ### Phase 4 — Splash & Theme Foundation
+Status: Completed
 
+### Phase 5 — Authentication Flow
+Status: Completed
+
+### Phase 6 — UI System
 Status: Completed
 
 Implemented:
 
-* Animated Splash Screen
-* Session Check
-* Health Check Bootstrap
-* Server Availability Detection
-* Retry Action
-* Route Decision Structure
-* Theme Foundation
-* Color Palette
-* Typography
-* Radius System
-* Spacing System
-* Shadows System
-
-Pending:
-
-* Native Splash Branding
-* Dark Theme
+* AppButton, AppTextField, AppLoader, AppErrorWidget, AppEmptyState, AppCachedImage, AppLottie, AppFullscreenLoader
+* ScreenUtil Integration (AppScreenUtilInit wired into app.dart)
 
 ---
 
-### Phase 5 — Authentication Flow
+### Phase 7a — Theming (Light/Dark)
 
-Status: Completed
+Status: Completed (already implemented)
 
 Implemented:
 
-* LoginCubit
-* LoginState
-* LoginPage
-* LoginUseCase
-* LogoutUseCase
-* RefreshTokenUseCase
-* GetProfileUseCase
-* Session Persistence
-* Splash Authentication Bootstrap
-* Auto Login
-* Auth Session Cubit
-* Auth Guard
-* Profile Bootstrap Foundation
-* Health Feature Module (Health Repository, Health DataSource, CheckHealth UseCase)
-* Splash Server Availability Check + Retry Action
+* `AppTheme.light()` and `AppTheme.dark()` — both fully built out (ColorScheme, TextTheme, AppBar, Input, Buttons, Card, Dialog, BottomSheet, Chip, Tabs, etc.)
+* `app.dart` wired with `theme: AppTheme.light()`, `darkTheme: AppTheme.dark()`, `themeMode: ThemeMode.system`
 
-Notes:
+Minor cleanup items (non-blocking):
 
-* Health feature was added as a supporting module for Splash bootstrap (not originally in the phase plan).
+* `checkboxTheme` in `light()` has two `if` blocks without braces (lint: `curly_braces_in_flow_control_structures`) — cosmetic
+* Light `ColorScheme` missing `surfaceContainerLowest` (dark has it) — inconsistency, low priority
 
 ---
 
 ## Current Phase
 
-### Phase 6 — UI System
+### Phase 7b — Home Feature Foundation
 
 Status: In Progress
 
 Target:
 
-* AppButton
-* AppTextField
-* AppLoader
-* AppErrorWidget
-* AppEmptyState
-* AppCachedImage
-* AppLottie
-* ScreenUtil Integration
+* Home feature data layer (datasource, repository impl)
+* Home feature domain layer (entities, repository contract, usecases)
+* Wire Home feature into DI (GetIt/Injectable)
+* Connect HomePage to new layers via Cubit/Bloc
+* Test responsive layout (AppScreenUtilInit) across screen sizes
+* Rebuild/validate LoginPage using Phase 6 widgets (AppButton, AppTextField, AppLoader)
 
 ---
 
 ## Existing Features
 
 ### Auth
-
-Completed:
-
-* Login
-* Session Management
-* Refresh Token Foundation
-* Profile Bootstrap
-
-Pages:
-
-* LoginPage
-
-Pending Pages:
-
-* RegisterPage
-* ForgotPasswordPage
-
----
+Completed: Login, Session Management, Refresh Token Foundation, Profile Bootstrap
+Pages: LoginPage
+Pending Pages: RegisterPage, ForgotPasswordPage
+Pending: Rebuild LoginPage with Phase 6 UI widgets
 
 ### Health
-
-Completed:
-
-* Health Check Endpoint
-* Health Repository / DataSource / UseCase
-* Splash Validation Flow
-
----
+Completed: Health Check Endpoint, Repository/DataSource/UseCase, Splash Validation Flow
 
 ### Splash
-
-Completed:
-
-* SplashCubit / SplashState
-* SplashPage
-* InitializeAppUseCase
-* Session + Health bootstrap sequence
-* Route decision logic
-
----
+Completed: SplashCubit/SplashState, SplashPage, InitializeAppUseCase, Session+Health bootstrap, route decision logic
 
 ### Home
-
-Status: Pending
-
-* Only presentation/pages (HomePage) scaffolded
-* Data and Domain layers not yet implemented
-
----
+Status: Pending — only presentation/pages (HomePage) scaffolded. Data and Domain layers are the main target of Phase 7b.
 
 ### Settings
-
-Status: Not Started
-
-* Empty cubit / pages / widgets folders only
+Status: Not Started — empty cubit/pages/widgets folders only
 
 ---
 
 ## Technical Debt
 
 ### RetryInterceptor
+Standalone Dio instance for retries. Future: retry through shared Dio pipeline, integrate with Refresh Token flow.
 
-Current implementation retries requests using a standalone Dio instance.
-
-Future improvements:
-
-* Retry through shared Dio pipeline
-* Integrate with Refresh Token Flow
-* Avoid duplicated networking stack
+### Theme (minor)
+* Fix missing braces in light() checkboxTheme if-statements
+* Add `surfaceContainerLowest` to light ColorScheme for parity with dark
 
 ---
 
 ## API
 
-Base URL:
-
-http://127.0.0.1:8000/api/v1/
-
-Health Endpoint:
-
-GET /health
+Base URL: http://127.0.0.1:8000/api/v1/
+Health Endpoint: GET /health
 
 ---
 
 ## Next Immediate Goal
 
-Phase 6 — UI System
+Phase 7b — Home Feature Foundation
 
-Build reusable widgets:
-
-* AppButton
-* AppTextField
-* AppLoader
-* AppErrorWidget
-* AppEmptyState
-* AppCachedImage
-* AppLottie
-* ScreenUtil Integration (responsive)
+1. Implement Home data layer (datasource + repository impl)
+2. Implement Home domain layer (entity, repository contract, usecases)
+3. Wire into DI and connect to HomePage via Cubit
+4. Responsive testing across screen sizes
+5. Rebuild LoginPage using Phase 6 widgets
 
 After that:
 
-* Dark Theme
-* Home Feature (data/domain layers)
 * Settings Feature
 * Localization
 * Testing Foundation
