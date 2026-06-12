@@ -6,7 +6,7 @@ Name: app_boilerplate
 
 Goal:
 
-Enterprise-grade Flutter Boilerplate using Clean Architecture, Feature First Architecture, Dio, AutoRoute, BLoC, GetIt, Injectable and Modular Design.
+Enterprise-grade Flutter Boilerplate using Clean Architecture, Feature First Architecture, Dio, AutoRoute, BLoC/Cubit, GetIt, Injectable and Modular Design.
 
 ---
 
@@ -136,6 +136,12 @@ Implemented:
 * Auth Session Cubit
 * Auth Guard
 * Profile Bootstrap Foundation
+* Health Feature Module (Health Repository, Health DataSource, CheckHealth UseCase)
+* Splash Server Availability Check + Retry Action
+
+Notes:
+
+* Health feature was added as a supporting module for Splash bootstrap (not originally in the phase plan).
 
 ---
 
@@ -172,6 +178,9 @@ Completed:
 Pages:
 
 * LoginPage
+
+Pending Pages:
+
 * RegisterPage
 * ForgotPasswordPage
 
@@ -182,7 +191,37 @@ Pages:
 Completed:
 
 * Health Check Endpoint
+* Health Repository / DataSource / UseCase
 * Splash Validation Flow
+
+---
+
+### Splash
+
+Completed:
+
+* SplashCubit / SplashState
+* SplashPage
+* InitializeAppUseCase
+* Session + Health bootstrap sequence
+* Route decision logic
+
+---
+
+### Home
+
+Status: Pending
+
+* Only presentation/pages (HomePage) scaffolded
+* Data and Domain layers not yet implemented
+
+---
+
+### Settings
+
+Status: Not Started
+
+* Empty cubit / pages / widgets folders only
 
 ---
 
@@ -223,10 +262,15 @@ Build reusable widgets:
 * AppLoader
 * AppErrorWidget
 * AppEmptyState
+* AppCachedImage
+* AppLottie
+* ScreenUtil Integration (responsive)
 
 After that:
 
 * Dark Theme
+* Home Feature (data/domain layers)
+* Settings Feature
 * Localization
 * Testing Foundation
 * Production Polish
