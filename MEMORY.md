@@ -5,7 +5,6 @@
 Name: app_boilerplate
 
 Goal:
-
 Enterprise-grade Flutter Boilerplate using Clean Architecture, Feature First Architecture, Dio, AutoRoute, BLoC/Cubit, GetIt, Injectable and Modular Design.
 
 ---
@@ -13,18 +12,16 @@ Enterprise-grade Flutter Boilerplate using Clean Architecture, Feature First Arc
 ## Architecture
 
 Pattern:
-
-* Clean Architecture
-* Feature First
-* Repository Pattern
-* UseCase Pattern
-* Dependency Injection
+- Clean Architecture
+- Feature First
+- Repository Pattern
+- UseCase Pattern
+- Dependency Injection
 
 Layers:
-
-* Presentation
-* Domain
-* Data
+- Presentation
+- Domain
+- Data
 
 ---
 
@@ -49,98 +46,98 @@ Status: Completed
 Status: Completed
 
 Implemented:
-
-* AppButton, AppTextField, AppLoader, AppErrorWidget, AppEmptyState, AppCachedImage, AppLottie, AppFullscreenLoader
-* ScreenUtil Integration (AppScreenUtilInit wired into app.dart)
+- AppButton, AppTextField, AppLoader, AppErrorWidget, AppEmptyState, AppCachedImage, AppLottie, AppFullscreenLoader
+- ScreenUtil Integration (AppScreenUtilInit wired into app.dart)
 
 ---
 
 ### Phase 7a — Theming (Light/Dark)
-
-Status: Completed (already implemented)
+Status: Completed
 
 Implemented:
+- AppTheme.light() / AppTheme.dark() fully implemented and wired in app.dart
+- ThemeMode.system active
+- Full ColorScheme + Typography + Widgets theming
 
-* `AppTheme.light()` and `AppTheme.dark()` — both fully built out (ColorScheme, TextTheme, AppBar, Input, Buttons, Card, Dialog, BottomSheet, Chip, Tabs, etc.)
-* `app.dart` wired with `theme: AppTheme.light()`, `darkTheme: AppTheme.dark()`, `themeMode: ThemeMode.system`
-
-Minor cleanup items (non-blocking):
-
-* `checkboxTheme` in `light()` has two `if` blocks without braces (lint: `curly_braces_in_flow_control_structures`) — cosmetic
-* Light `ColorScheme` missing `surfaceContainerLowest` (dark has it) — inconsistency, low priority
+Minor tech debt:
+- checkboxTheme missing braces (lint only)
+- surfaceContainerLowest missing in light theme (parity issue)
 
 ---
 
 ## Current Phase
 
 ### Phase 7b — Home Feature Foundation
-
 Status: In Progress
 
-Target:
-
-* Home feature data layer (datasource, repository impl)
-* Home feature domain layer (entities, repository contract, usecases)
-* Wire Home feature into DI (GetIt/Injectable)
-* Connect HomePage to new layers via Cubit/Bloc
-* Test responsive layout (AppScreenUtilInit) across screen sizes
-* Rebuild/validate LoginPage using Phase 6 widgets (AppButton, AppTextField, AppLoader)
+Work in progress:
+- Home data layer (datasource, repository impl)
+- Home domain layer (entity, repository contract, usecases)
+- DI wiring (GetIt / Injectable)
+- HomeCubit/Bloc integration with HomePage
+- Responsive validation using ScreenUtilInit
+- LoginPage refactor using Phase 6 UI kit
 
 ---
 
 ## Existing Features
 
 ### Auth
-Completed: Login, Session Management, Refresh Token Foundation, Profile Bootstrap
-Pages: LoginPage
-Pending Pages: RegisterPage, ForgotPasswordPage
-Pending: Rebuild LoginPage with Phase 6 UI widgets
+Status: Completed (core flow)
+- Login flow
+- Session management
+- Token handling
+- Profile bootstrap
+
+Pending:
+- RegisterPage
+- ForgotPasswordPage
+- UI refactor using AppButton/AppTextField
+
+---
 
 ### Health
-Completed: Health Check Endpoint, Repository/DataSource/UseCase, Splash Validation Flow
+Status: Completed
+- Health check endpoint
+- Splash bootstrap validation
+- Repository + UseCase implemented
+
+---
 
 ### Splash
-Completed: SplashCubit/SplashState, SplashPage, InitializeAppUseCase, Session+Health bootstrap, route decision logic
+Status: Completed
+- SplashCubit + SplashState
+- App initialization flow
+- Auth + Health bootstrap logic
+- Route decision system
+
+---
 
 ### Home
-Status: Pending — only presentation/pages (HomePage) scaffolded. Data and Domain layers are the main target of Phase 7b.
+Status:
+- Presentation layer scaffold exists
+- Data & Domain layers in progress (Phase 7b)
+
+---
 
 ### Settings
-Status: Not Started — empty cubit/pages/widgets folders only
+Status: Not started
 
 ---
 
 ## Technical Debt
 
-### RetryInterceptor
-Standalone Dio instance for retries. Future: retry through shared Dio pipeline, integrate with Refresh Token flow.
-
-### Theme (minor)
-* Fix missing braces in light() checkboxTheme if-statements
-* Add `surfaceContainerLowest` to light ColorScheme for parity with dark
+- RetryInterceptor isolation (needs integration into shared Dio flow)
+- Theme minor inconsistencies:
+  - checkboxTheme braces cleanup
+  - surfaceContainerLowest missing in light theme
 
 ---
 
 ## API
 
-Base URL: http://127.0.0.1:8000/api/v1/
-Health Endpoint: GET /health
+Base URL:
+http://127.0.0.1:8000/api/v1/
 
----
-
-## Next Immediate Goal
-
-Phase 7b — Home Feature Foundation
-
-1. Implement Home data layer (datasource + repository impl)
-2. Implement Home domain layer (entity, repository contract, usecases)
-3. Wire into DI and connect to HomePage via Cubit
-4. Responsive testing across screen sizes
-5. Rebuild LoginPage using Phase 6 widgets
-
-After that:
-
-* Settings Feature
-* Localization
-* Testing Foundation
-* Production Polish
+Endpoints:
+- GET /health

@@ -1,56 +1,56 @@
 # CHANGELOG.md
 
-## 2026-06-12 (cont.)
+## 2026-06-12 (current)
 
-### Reviewed
+### Added
+- Phase 7b officially started (Home Feature Foundation)
+- MEMORY updated to reflect Home domain/data layer in progress
+- Project state aligned across MEMORY / PHASES / CHANGELOG
 
-* `AppTheme.light()` and `AppTheme.dark()` reviewed — both already fully implemented and wired in `app.dart` (`theme`, `darkTheme`, `themeMode: ThemeMode.system`). Theming portion of Phase 7 closed without additional work needed.
+### Status Update
+- Phase 6: Completed (UI System)
+- Phase 7a: Completed (Theming)
+- Phase 7b: In Progress (Home Feature Foundation)
 
-### Found (minor, non-blocking)
-
-* `light()` checkboxTheme: two `if` statements without braces (lint warning only)
-* Light `ColorScheme` missing `surfaceContainerLowest` (present in dark) — parity gap noted as tech debt
-
-### Status
-
-* Phase 7 split into 7a (Theming — Completed) and 7b (Home Feature Foundation — In Progress, current focus)
+### In Progress
+- Home data layer:
+  - datasource
+  - repository implementation
+- Home domain layer:
+  - entity
+  - repository contract
+  - usecases
+- DI wiring (GetIt / Injectable)
+- HomePage → Cubit/Bloc integration
+- LoginPage refactor using UI Kit (Phase 6)
+- Responsive validation (ScreenUtilInit)
 
 ---
 
-## 2026-06-12
+## 2026-06-12 (previous snapshot)
 
-### Added
+### Reviewed
+- AppTheme.light() and AppTheme.dark() verified fully implemented and wired in app.dart
+- Phase 7 split into:
+  - 7a: Theming (Completed)
+  - 7b: Home Feature Foundation (Current focus)
 
-* AppButton, AppTextField, AppLoader, AppErrorWidget, AppEmptyState, AppCachedImage, AppLottie, AppFullscreenLoader
-* AppScreenUtilInit wired into app.dart
-
-### Fixed
-
-* AppLoader size/strokeWidth now functional
-* AppButton dead code removed
-* AppErrorWidget/AppEmptyState import paths unified
-* AppCachedImage callback signatures made SDK-safe
-
-### Status
-
-* Phase 6 (UI System) marked as Completed.
+### Minor Tech Debt
+- checkboxTheme missing braces (lint only)
+- surfaceContainerLowest missing in light ColorScheme
 
 ---
 
 ## 2026-06-11
 
 ### Added
-
-* Health feature module, repository, datasource, CheckHealth usecase
-* Splash server availability check + retry action
-* Session bootstrap during Splash
-* Token-based auto login flow
-* Profile bootstrap foundation
+- Health feature module (repository + datasource + usecase)
+- Splash server availability check
+- Session bootstrap + auto login flow
+- Profile bootstrap foundation
 
 ### Fixed
-
-* Dio interceptor chain issue
-* LoggingInterceptor response handling bug
-* ErrorInterceptor exception propagation
-* Health check false-negative behavior
-* Splash freeze when backend connection succeeds
+- Dio interceptor chain issues
+- LoggingInterceptor response handling
+- ErrorInterceptor propagation bug
+- Splash freeze issue resolved
