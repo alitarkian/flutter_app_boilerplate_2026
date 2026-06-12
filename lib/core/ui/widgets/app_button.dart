@@ -123,7 +123,7 @@ class AppButton extends StatelessWidget {
       case AppButtonType.primary:
         return ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.primarytext,
+          foregroundColor: AppColors.textPrimary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.md),
           ),
@@ -131,7 +131,7 @@ class AppButton extends StatelessWidget {
 
       case AppButtonType.secondary:
         return ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primarytext,
+          backgroundColor: AppColors.textPrimary,
           foregroundColor: AppColors.primary,
           side: BorderSide(color: AppColors.primary),
           shape: RoundedRectangleBorder(
@@ -142,7 +142,7 @@ class AppButton extends StatelessWidget {
       case AppButtonType.danger:
         return ElevatedButton.styleFrom(
           backgroundColor: Colors.red,
-          foregroundColor: AppColors.primarytext,
+          foregroundColor: AppColors.textPrimary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.md),
           ),

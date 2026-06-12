@@ -103,7 +103,7 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: DesignTokens.textFieldHeight,
+      height: DesignTokens.inputHeight,
       child: TextFormField(
         controller: widget.controller,
         validator: widget.validator,

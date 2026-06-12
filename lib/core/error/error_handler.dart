@@ -1,55 +1,37 @@
+import 'package:dio/dio.dart';
 import 'exceptions.dart';
 import 'failures.dart';
 
 class ErrorHandler {
-  static Failure handle(
-    Exception exception,
-  ) {
+  static Failure handle(Exception exception) {
+    // اگه DioException بود، اول error داخلش رو چک کن
+    if (exception is DioException) {
+      final inner = exception.error;
+      if (inner is Exception) {
+        return handle(inner); // recursive با exception واقعی
+      }
+      return UnknownFailure(message: exception.message ?? 'Network error');
+    }
+
     switch (exception) {
       case UnauthorizedException():
-        return UnauthorizedFailure(
-          message: exception.message,
-        );
-
+        return UnauthorizedFailure(message: exception.message);
       case ForbiddenException():
-        return ForbiddenFailure(
-          message: exception.message,
-        );
-
+        return ForbiddenFailure(message: exception.message);
       case NotFoundException():
-        return NotFoundFailure(
-          message: exception.message,
-        );
-
+        return NotFoundFailure(message: exception.message);
       case ValidationException():
-        return ValidationFailure(
-          message: exception.message,
-        );
-
+        return ValidationFailure(message: exception.message);
       case CacheException():
-        return CacheFailure(
-          message: exception.message,
-        );
-
+        return CacheFailure(message: exception.message);
       case NetworkException():
-        return NetworkFailure(
-          message: exception.message,
-        );
-
+        return NetworkFailure(message: exception.message);
       case TimeoutException():
-        return TimeoutFailure(
-          message: exception.message,
-        );
-
+        return TimeoutFailure(message: exception.message);
       case ServerException():
-        return ServerFailure(
-          message: exception.message,
-        );
-
+        return ServerFailure(message: exception.message);
       default:
-        return UnknownFailure(
-          message: exception.toString(),
-        );
+        return UnknownFailure(message: exception.toString());
     }
   }
 }

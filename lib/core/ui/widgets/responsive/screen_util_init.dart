@@ -12,7 +12,7 @@ class AppScreenUtilInit extends StatelessWidget {
       designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, __) => child,
+      builder: (_, _) => child,
     );
   }
 }

@@ -155,7 +155,7 @@ class _Background extends StatelessWidget {
             height: 360,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: const Color(0xFF6432C8).withOpacity(0.10),
+              color: const Color(0xFF6432C8).withValues(alpha: 0.10),
             ),
           ),
         ),
@@ -167,7 +167,7 @@ class _Background extends StatelessWidget {
             height: 280,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: const Color(0xFF1E50A0).withOpacity(0.09),
+              color: const Color(0xFF1E50A0).withValues(alpha: 0.09),
             ),
           ),
         ),
@@ -183,9 +183,12 @@ class _LogoIcon extends StatelessWidget {
       width: 48,
       height: 48,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.07),
+        color: Colors.white.withValues(alpha: 0.07),
         borderRadius: BorderRadius.circular(13),
-        border: Border.all(color: Colors.white.withOpacity(0.12), width: 1),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.12),
+          width: 1,
+        ),
       ),
       child: const Icon(
         Icons.lock_outline_rounded,
@@ -217,7 +220,7 @@ class _Headline extends StatelessWidget {
           'Sign in to your workspace to continue',
           style: TextStyle(
             fontSize: 14,
-            color: Colors.white.withOpacity(0.40),
+            color: Colors.white.withValues(alpha: 0.40),
             height: 1.5,
           ),
         ),
@@ -252,7 +255,7 @@ class _InputField extends StatelessWidget {
             fontSize: 11,
             fontWeight: FontWeight.w600,
             letterSpacing: 0.9,
-            color: Colors.white.withOpacity(0.40),
+            color: Colors.white.withValues(alpha: 0.40),
           ),
         ),
         const SizedBox(height: 8),
@@ -263,16 +266,16 @@ class _InputField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: TextStyle(
-              color: Colors.white.withOpacity(0.25),
+              color: Colors.white.withValues(alpha: 0.25),
               fontSize: 14,
             ),
             prefixIcon: Icon(
               icon,
-              color: Colors.white.withOpacity(0.28),
+              color: Colors.white.withValues(alpha: 0.28),
               size: 18,
             ),
             filled: true,
-            fillColor: Colors.white.withOpacity(0.05),
+            fillColor: Colors.white.withValues(alpha: 0.05),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 14,
               vertical: 15,
@@ -280,21 +283,21 @@ class _InputField extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(11),
               borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.09),
+                color: Colors.white.withValues(alpha: 0.09),
                 width: 1,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(11),
               borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.09),
+                color: Colors.white.withValues(alpha: 0.09),
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(11),
               borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.30),
+                color: Colors.white.withValues(alpha: 0.30),
                 width: 1,
               ),
             ),
@@ -330,7 +333,7 @@ class _PasswordField extends StatelessWidget {
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
                 letterSpacing: 0.9,
-                color: Colors.white.withOpacity(0.40),
+                color: Colors.white.withValues(alpha: 0.40),
               ),
             ),
             GestureDetector(
@@ -339,7 +342,7 @@ class _PasswordField extends StatelessWidget {
                 'Forgot password?',
                 style: TextStyle(
                   fontSize: 12,
-                  color: Colors.white.withOpacity(0.35),
+                  color: Colors.white.withValues(alpha: 0.35),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -354,12 +357,12 @@ class _PasswordField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: '••••••••',
             hintStyle: TextStyle(
-              color: Colors.white.withOpacity(0.25),
+              color: Colors.white.withValues(alpha: 0.25),
               fontSize: 14,
             ),
             prefixIcon: Icon(
               Icons.lock_outline_rounded,
-              color: Colors.white.withOpacity(0.28),
+              color: Colors.white.withValues(alpha: 0.28),
               size: 18,
             ),
             suffixIcon: GestureDetector(
@@ -368,12 +371,12 @@ class _PasswordField extends StatelessWidget {
                 obscure
                     ? Icons.visibility_outlined
                     : Icons.visibility_off_outlined,
-                color: Colors.white.withOpacity(0.28),
+                color: Colors.white.withValues(alpha: 0.28),
                 size: 18,
               ),
             ),
             filled: true,
-            fillColor: Colors.white.withOpacity(0.05),
+            fillColor: Colors.white.withValues(alpha: 0.05),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 14,
               vertical: 15,
@@ -381,21 +384,21 @@ class _PasswordField extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(11),
               borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.09),
+                color: Colors.white.withValues(alpha: 0.09),
                 width: 1,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(11),
               borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.09),
+                color: Colors.white.withValues(alpha: 0.09),
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(11),
               borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.30),
+                color: Colors.white.withValues(alpha: 0.30),
                 width: 1,
               ),
             ),
@@ -421,7 +424,7 @@ class _SignInButton extends StatelessWidget {
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
-          disabledBackgroundColor: Colors.white.withOpacity(0.55),
+          disabledBackgroundColor: Colors.white.withValues(alpha: 0.55),
           foregroundColor: const Color(0xFF0A0A0A),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(11),
@@ -463,7 +466,10 @@ class _Divider extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: Divider(color: Colors.white.withOpacity(0.08), thickness: 1),
+          child: Divider(
+            color: Colors.white.withValues(alpha: 0.08),
+            thickness: 1,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -471,12 +477,15 @@ class _Divider extends StatelessWidget {
             'or continue with',
             style: TextStyle(
               fontSize: 12,
-              color: Colors.white.withOpacity(0.25),
+              color: Colors.white.withValues(alpha: 0.25),
             ),
           ),
         ),
         Expanded(
-          child: Divider(color: Colors.white.withOpacity(0.08), thickness: 1),
+          child: Divider(
+            color: Colors.white.withValues(alpha: 0.08),
+            thickness: 1,
+          ),
         ),
       ],
     );
@@ -513,20 +522,20 @@ class _SocialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
       onPressed: () {},
-      icon: Icon(icon, size: 18, color: Colors.white.withOpacity(0.65)),
+      icon: Icon(icon, size: 18, color: Colors.white.withValues(alpha: 0.65)),
       label: Text(
         label,
         style: TextStyle(
           fontSize: 13,
           fontWeight: FontWeight.w500,
-          color: Colors.white.withOpacity(0.65),
+          color: Colors.white.withValues(alpha: 0.65),
         ),
       ),
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 13),
-        side: BorderSide(color: Colors.white.withOpacity(0.10), width: 1),
+        side: BorderSide(color: Colors.white.withValues(alpha: 0.10), width: 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
-        backgroundColor: Colors.white.withOpacity(0.04),
+        backgroundColor: Colors.white.withValues(alpha: 0.04),
       ),
     );
   }
@@ -539,7 +548,10 @@ class _Footer extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: "Don't have an account? ",
-          style: TextStyle(fontSize: 13, color: Colors.white.withOpacity(0.28)),
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.white.withValues(alpha: 0.28),
+          ),
           children: [
             WidgetSpan(
               child: GestureDetector(
@@ -549,7 +561,7 @@ class _Footer extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white.withOpacity(0.65),
+                    color: Colors.white.withValues(alpha: 0.65),
                   ),
                 ),
               ),
